@@ -3,11 +3,15 @@ package Work_1.Dishes;
 import Work_1.Ingredients.Ingredient;
 import Work_1.Ingredients.Salt;
 import Work_1.Ingredients.Meat;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class Meatball implements Dish {
     private final String name = "Фрикаделька";
+
+    private Logger log = LogManager.getLogger();
 
     @Override
     public String toString() {
@@ -22,6 +26,7 @@ public class Meatball implements Dish {
                 if (newCount >= 0) {
                     ingredient.setCount(newCount);
                 } else {
+                    log.warn("Закончилось мясо");
                     ingredient.setCount(newCount);
                     return false;
                 }
@@ -31,6 +36,7 @@ public class Meatball implements Dish {
                 if (newCount >= 0) {
                     ingredient.setCount(newCount);
                 } else {
+                    log.warn("Закончилась мука");
                     ingredient.setCount(newCount);
                     return false;
                 }

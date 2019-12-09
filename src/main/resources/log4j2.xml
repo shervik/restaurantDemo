@@ -2,11 +2,17 @@
 <Configuration status="WARN">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss} [%-5level] %c{1} - %msg%n"/>
         </Console>
+        <File name="File" fileName="output.log" bufferedIO="false">
+            <PatternLayout pattern="%d{HH:mm:ss} [%-5level] %c{1} - %msg%n"/>
+        </File>
     </Appenders>
     <Loggers>
-        <Root level="error">
+        <Logger name="Work_1" level="trace" additivity="false">
+            <AppenderRef ref="File"/>
+        </Logger>
+        <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>

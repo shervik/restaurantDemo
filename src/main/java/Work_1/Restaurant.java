@@ -5,10 +5,14 @@ import Work_1.Dishes.Dish;
 import Work_1.Dishes.Meatball;
 import Work_1.Dishes.Tea;
 import Work_1.Ingredients.Ingredient;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
 public class Restaurant {
+    private Logger log = LogManager.getLogger("Ресторан");
+
     Map<String, Integer> dishes = new HashMap<>();
     List<Ingredient> ingredientList = new LinkedList<>();
 
@@ -29,7 +33,7 @@ public class Restaurant {
 
     public void allIng() {
         for (Ingredient ingredient : ingredientList) {
-            System.out.printf("В ресторане имеется %s в размере %d г.\n", ingredient, ingredient.getCount());
+            log.info("В ресторане имеется {} в размере {} г.\n", ingredient, ingredient.getCount());
         }
     }
 
@@ -37,25 +41,28 @@ public class Restaurant {
         allIng();
 
         while ((ingredientList.get(0).getCount() > 0 && ingredientList.get(1).getCount() > 0) || (ingredientList.get(0).getCount() > 0 && ingredientList.get(2).getCount() > 0) || (ingredientList.get(3).getCount() > 0 && ingredientList.get(4).getCount() > 0)) {
+            log.trace("Пытаемся готовить хлеб.");
             getDish(new Bread());
+            log.trace("Пытаемся готовить фрикадельки.");
             getDish(new Meatball());
+            log.trace("Пытаемся готовить чай.");
             getDish(new Tea());
         }
 
-        System.out.println();
+        log.info("Игредиенты закончились :(");
 
         call();
     }
 
     private void call() {
-        dishes.forEach((key, value) -> System.out.printf("Всего в ресторане приготовлено %d шт. %s.\n", value, key));
+        dishes.forEach((key, value) -> log.info("Всего в ресторане приготовлено {} шт. {}.\n", value, key));
 
         if (dishes.containsKey("Хлеб") && dishes.containsKey("Фрикаделька") && dishes.containsKey("Чай")) {
-            System.out.println("Ужин готов! Садитесь жрать, пожалуйста. \u00A9");
+            log.info("Ужин готов! Садитесь жрать, пожалуйста. \u00A9");
         }
 
         if (dishes.isEmpty()) {
-            System.out.println("К сожалению, ресторан ничего не приготовил :(");
+            log.error("К сожалению, ресторан ничего не приготовил :(");
         }
     }
 
