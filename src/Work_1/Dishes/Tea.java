@@ -7,11 +7,7 @@ import Work_1.Ingredients.Sugar;
 import java.util.List;
 
 public class Tea implements Dish {
-    private final String name;
-
-    public Tea() {
-        this.name = "Чай";
-    }
+    private final String name = "Чай";
 
     @Override
     public String toString() {

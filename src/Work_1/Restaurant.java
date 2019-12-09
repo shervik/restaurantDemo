@@ -9,7 +9,7 @@ import Work_1.Ingredients.Ingredient;
 import java.util.*;
 
 public class Restaurant {
-    Map<String, Integer> dishes = new HashMap();
+    Map<String, Integer> dishes = new HashMap<>();
     List<Ingredient> ingredientList = new LinkedList<>();
 
     public void addIngredient(Ingredient ingredient) {
@@ -36,7 +36,7 @@ public class Restaurant {
     public void toOrder() {
         allIng();
 
-        while ((ingredientList.get(0).getCount() > 0 && ingredientList.get(1).getCount() > 0 && ingredientList.get(4).getCount() > 0) || (ingredientList.get(0).getCount() > 0 && ingredientList.get(2).getCount() > 0) || (ingredientList.get(3).getCount() > 0 && ingredientList.get(4).getCount() > 0)) {
+        while ((ingredientList.get(0).getCount() > 0 && ingredientList.get(1).getCount() > 0) || (ingredientList.get(0).getCount() > 0 && ingredientList.get(2).getCount() > 0) || (ingredientList.get(3).getCount() > 0 && ingredientList.get(4).getCount() > 0)) {
             getDish(new Bread());
             getDish(new Meatball());
             getDish(new Tea());
@@ -48,9 +48,7 @@ public class Restaurant {
     }
 
     private void call() {
-        for (Map.Entry en : dishes.entrySet()) {
-            System.out.printf("Всего в ресторане приготовлено %d шт. %s.\n", (int) en.getValue(), en.getKey());
-        }
+        dishes.forEach((key, value) -> System.out.printf("Всего в ресторане приготовлено %d шт. %s.\n", value, key));
 
         if (dishes.containsKey("Хлеб") && dishes.containsKey("Фрикаделька") && dishes.containsKey("Чай")) {
             System.out.println("Ужин готов! Садитесь жрать, пожалуйста. \u00A9");

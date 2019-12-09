@@ -8,11 +8,7 @@ import Work_1.Ingredients.Sugar;
 import java.util.List;
 
 public class Bread implements Dish {
-    private final String name;
-
-    public Bread() {
-        this.name = "Хлеб";
-    }
+    private final String name = "Хлеб";
 
     @Override
     public String toString() {
@@ -24,25 +20,17 @@ public class Bread implements Dish {
         for (Ingredient ingredient : ingredientList) {
             if (ingredient instanceof Flour) {
                 int newCount = ingredient.getCount() - 50;
-                if (newCount > 0) {
+                if (newCount >= 0) {
                     ingredient.setCount(newCount);
                 } else {
                     ingredient.setCount(newCount);
                     return false;
                 }
             }
+
             if (ingredient instanceof Salt) {
                 int newCount = ingredient.getCount() - 20;
-                if (newCount > 0) {
-                    ingredient.setCount(newCount);
-                } else {
-                    ingredient.setCount(newCount);
-                    return false;
-                }
-            }
-            if (ingredient instanceof Sugar) {
-                int newCount = ingredient.getCount() - 30;
-                if (newCount > 0) {
+                if (newCount >= 0) {
                     ingredient.setCount(newCount);
                 } else {
                     ingredient.setCount(newCount);

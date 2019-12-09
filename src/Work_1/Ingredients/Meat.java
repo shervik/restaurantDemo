@@ -1,12 +1,8 @@
 package Work_1.Ingredients;
 
 public class Meat implements Ingredient {
-    private final String name;
+    private final String name = "Мясо";
     private int count = (int) (Math.random() * 160);
-
-    public Meat() {
-        this.name = "Мясо";
-    }
 
     @Override
     public String toString() {

@@ -1,9 +1,7 @@
 package Work_1.Ingredients;
 
-import Work_1.Ingredients.Ingredient;
-
 public class Lipton implements Ingredient {
-    private final String name;
+    private final String name = "Чай Липтон листовой";
     private int count = (int) (Math.random() * 5);
 
     @Override
@@ -14,10 +12,6 @@ public class Lipton implements Ingredient {
     @Override
     public void setCount(int count) {
         this.count = count;
-    }
-
-    public Lipton() {
-        this.name = "Чай Липтон листовой";
     }
 
     @Override

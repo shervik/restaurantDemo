@@ -7,11 +7,7 @@ import Work_1.Ingredients.Meat;
 import java.util.List;
 
 public class Meatball implements Dish {
-    private final String name;
-
-    public Meatball() {
-        this.name = "Фрикаделька";
-    }
+    private final String name = "Фрикаделька";
 
     @Override
     public String toString() {
@@ -23,7 +19,7 @@ public class Meatball implements Dish {
         for (Ingredient ingredient : ingredientList) {
             if (ingredient instanceof Meat) {
                 int newCount = ingredient.getCount() - 80;
-                if (newCount > 0) {
+                if (newCount >= 0) {
                     ingredient.setCount(newCount);
                 } else {
                     ingredient.setCount(newCount);
@@ -32,7 +28,7 @@ public class Meatball implements Dish {
             }
             if (ingredient instanceof Salt) {
                 int newCount = ingredient.getCount() - 20;
-                if (newCount > 0) {
+                if (newCount >= 0) {
                     ingredient.setCount(newCount);
                 } else {
                     ingredient.setCount(newCount);

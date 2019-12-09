@@ -1,7 +1,7 @@
 package Work_1.Ingredients;
 
 public class Sugar implements Ingredient {
-    private final String name;
+    private final String name = "Cахар";
     private int count = (int) (Math.random() * 150);
 
     @Override
@@ -12,10 +12,6 @@ public class Sugar implements Ingredient {
     @Override
     public void setCount(int count) {
         this.count = count;
-    }
-
-    public Sugar() {
-        this.name = "Сахар";
     }
 
     @Override
